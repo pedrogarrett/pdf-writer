@@ -710,7 +710,7 @@ class PDF::Writer
 
     xref = []
 
-    content = "%PDF-#{@version}\n%\303\242\303\243\303\217\303\223\n"
+    content = "%PDF-#{@version}\n%\303\242\303\243\303\217\303\223\n".b
     pos = content.size
 
     objects.each do |oo|
