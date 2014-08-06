@@ -102,9 +102,9 @@ class PDF::Writer::Graphics::ImageInfo
   def discover_format
     if    @top        =~ %r{^GIF8[79]a}
       Formats::GIF
-    elsif @top[0, 3]  == "\xff\xd8\xff"
+    elsif @top[0, 3]  == "\xff\xd8\xff".b
       Formats::JPEG
-    elsif @top[0, 8]  == "\x89PNG\x0d\x0a\x1a\x0a"
+    elsif @top[0, 8]  == "\x89PNG\x0d\x0a\x1a\x0a".b
       Formats::PNG
     elsif @top[0, 3]  == "FWS"
       Formats::SWF
@@ -112,11 +112,11 @@ class PDF::Writer::Graphics::ImageInfo
       Formats::PSD
     elsif @top[0, 2]  == 'BM'
       Formats::BMP
-    elsif @top[0, 4]  == "MM\x00\x2a"
+    elsif @top[0, 4]  == "MM\x00\x2a".b
       Formats::TIFF
-    elsif @top[0, 4]  == "II\x2a\x00"
+    elsif @top[0, 4]  == "II\x2a\x00".b
       Formats::TIFF
-    elsif @top[0, 12] == "\x00\x00\x00\x0c\x6a\x50\x20\x20\x0d\x0a\x87\x0a"
+    elsif @top[0, 12] == "\x00\x00\x00\x0c\x6a\x50\x20\x20\x0d\x0a\x87\x0a".b
       Formats::JP2
     elsif @top        =~ %r{^P[1-7]}
       Formats::PPM
